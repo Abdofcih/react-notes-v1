@@ -1,0 +1,19 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "body": "Todays ToDo\n\n- Read a book\n- watch a video\n- Play football\n- Eat a fish\n- 55555",
+      "updated": "2021-12-15T14:52:49.640Z"
+    },
+    {
+      "body": "new note\nn\nn",
+      "updated": "2021-12-15T15:04:15.252Z",
+      "id": 2
+    },
+    {
+      "body": "edited",
+      "updated": "2021-12-15T15:25:37.844Z",
+      "id": 3
+    }
+  ]
+}
