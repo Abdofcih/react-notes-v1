@@ -8,6 +8,7 @@ In the project directory, you can run:
 
 ### `npm run server`
 
+##### Don't forget to install json-server `npm i json-server`
 Runs json-server to serve notes data to your requests
 
 

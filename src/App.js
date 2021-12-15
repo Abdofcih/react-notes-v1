@@ -15,7 +15,7 @@ function App() {
     <Router>
     <div className={`container ${theme}`}>
     <div className="app">
-       <Header theme={theme}  onChangeTheme={changeTheme} />
+       <Header theme={theme}  onChangeTheme={changeTheme} ><h1>test</h1></Header>
        <Routes>
           <Route path="/" element={<NotesPage />} exact/>
           <Route path="/note/:id" element={<NotePage />} />
