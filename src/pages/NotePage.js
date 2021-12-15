@@ -1,61 +1,35 @@
-import React, {useState,useEffect} from 'react'
-import { useParams ,useNavigate  } from 'react-router-dom';
+import React, {useState,useEffect} from 'react';
+import { useParams  } from 'react-router-dom';
 import { ReactComponent as ArrowLeft } from '../asstes/arrow-left.svg'
+import {useNotes} from '../hooks/NotesHook'
 
 
 function NotePage() {
-    const navigate  = useNavigate();
+
     const {id} = useParams()
     const [note, setNote] = useState(null)
+    const {getNote,createNote,updateNote,deleteNote} = useNotes()
 
    useEffect(() => {
-       getNote()
+    // Send 1- id of current note to get it 2- setNote function to set note data
+    getNote(id,setNote)/* .then(data=> setNote(data )) */
+
    }, [id]);
 
-  const getNote =async ()=>{
-    if(id === 'new') return //Don't get any thing I want to add a new note
-    let response = await fetch(`http://localhost:5000/notes/${id}`)
-    let data = await response.json()
-    setNote(data)
-  }
 
-  const createNote = async ()=>{
-    await fetch(`http://localhost:5000/notes`,{
-       method:"POST",
-       body: JSON.stringify({...note,"updated":new Date()}) ,
-       headers:{
-           "Content-Type":"application/json"
-       }
-    })
-}
-  const updateNote = async ()=>{
-      await fetch(`http://localhost:5000/notes/${id}`,{
-         method:"PUT",
-         body: JSON.stringify({...note,"updated":new Date()}) ,
-         headers:{
-             "Content-Type":"application/json"
-         }
-      })
-  }
-    const deleteNote = async () => {
-        await fetch(`http://127.0.0.1:5000/notes/${id}/`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(note)
-        })
-        navigate('/')
-    }
+
+   const deleteHelper = ()=>{
+    deleteNote(id, note)
+   }
+
+ 
   const handleSubmit = ()=>{
     if(id !== 'new' && !note.body)
-        deleteNote()
+    deleteHelper()
     else if(id !== 'new')
-        updateNote()
+        updateNote(id, note)
      else if(id === 'new' && note !== null)
-        createNote()
-
-     navigate('/')
+        createNote(note)
   }
   
     return (
@@ -65,7 +39,7 @@ function NotePage() {
                  <ArrowLeft  onClick={handleSubmit}  />
                 </h3>
                 {id != 'new' ? (
-                    <button onClick={deleteNote}>Delete</button>
+                    <button onClick={deleteHelper}>Delete</button>
                 ) : (
                     <button onClick={handleSubmit}>Done</button>
                 )}

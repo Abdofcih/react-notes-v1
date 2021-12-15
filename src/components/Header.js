@@ -2,8 +2,7 @@ import React from 'react'
 import { ReactComponent as MoonIcon } from '../asstes/moon.svg'
 import { ReactComponent as SunIcon } from '../asstes/sun.svg'
 
-const Header = ({children,theme, onChangeTheme=f=>f}) => {
-    console.log(children);
+const Header = ({theme, onChangeTheme=f=>f}) => {
     return (
         <div className="app-header">
           <h1 >Notes</h1> 

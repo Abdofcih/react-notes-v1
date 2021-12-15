@@ -1,23 +1,12 @@
-import React, {useState,useEffect} from 'react'
+import React from 'react';
 import NoteItem from '../components/noteItem';
 import AddButton from '../components/AddButton';
 
-const NotesPage = ()=>{
-
-  
-  const [NotesData, setNotesData] = useState([])
-  
-  useEffect(() => {
-    getNotes()
-   }, []);
-   
-  const getNotes =async ()=>{
-    let response = await fetch("http://localhost:5000/notes")
-    let data = await response.json()
-    setNotesData(data)
-  }
+import {useNotes} from '../hooks/NotesHook'
 
 
+ const NotesPage = ()=>{
+ const {NotesData} = useNotes()
     return (
 
         <div className="notes">
