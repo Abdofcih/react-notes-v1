@@ -1,8 +1,7 @@
 # Notes App with React and Json-Server
 
 # Video Demo
- src='//gifs.com/embed/react-notes-app-mqGZDA'
-![Notes app Demo]("https://j.gifs.com/mqGZDA.mp4)
+![Notes app Demo](https://j.gifs.com/mqGZDA.gif)
 ## Available Scripts
 
 In the project directory, you can run:
